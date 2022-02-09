@@ -1,11 +1,10 @@
-import React from 'react';
+import Layout from '../../shared/layout';
 
-type Props = {};
 
-const Episodes = (props: Props) => {
-  return <div>
-      episodes page
-    </div>;
+const Episodes = () => {
+  return <Layout>
+      <>episodes page</>
+    </Layout>;
 };
 
 export default Episodes;
