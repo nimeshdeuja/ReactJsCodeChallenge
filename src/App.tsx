@@ -1,23 +1,20 @@
-import logo from './logo.svg';
 import './App.css';
+import { useDispatch, useSelector } from "react-redux"
+import { bindActionCreators } from 'redux';
+import { actionCreators } from './state';
 
 function App() {
+
+  const dispatch = useDispatch();
+
+  const { showsDetailSuccess, showsDetailError, episodesSuccess } = bindActionCreators(actionCreators, dispatch);
+  const data1 = useSelector((state:any)=>state);
+  console.log("🚀 ~ file: App.tsx ~ line 12 ~ App ~ data1", data1)
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+        <div onClick={()=>showsDetailSuccess({name:'deuja'})}>clicked</div>
+        <div onClick={()=>episodesSuccess([{name:'nimesh', surname:'deuja', age:80}])}>clicked</div>
     </div>
   );
 }
