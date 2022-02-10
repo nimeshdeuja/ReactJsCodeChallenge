@@ -10,7 +10,7 @@ export const FooterStyled = styled.div`
     align-items: center;
     align-self: center;
     color:rgba(${Theme.text},0.8);
-    ${Theme.primaryFont};
+    ${Theme.secondaryFont};
     ${Theme.fSM};
 
     width:${Theme.container};

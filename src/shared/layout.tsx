@@ -1,7 +1,7 @@
 import { useRef } from 'react';
 
 import Footer from './footer';
-import { LayoutStyled } from './layoutStyle';
+import { LayoutStyled } from './layout-style';
 import Header from './header';
 
 type Props = {

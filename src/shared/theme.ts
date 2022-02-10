@@ -1,9 +1,12 @@
+import styled from "styled-components";
+
 const Theme = {
     primary: "60, 148, 139", 
     secondary: "63, 63, 63", 
     white: "255, 255, 255",
     black: "0,0,0",
     text:"10, 10, 10",
+    offWhite:"247, 247, 247",
   
     fSM: `font-size: 12px`,
     fDF: `font-size: 14px`,
@@ -17,8 +20,8 @@ const Theme = {
     gLG: "15px",
     gXL: "20px",
   
-    primaryFont: `font-family: "Raleway", sans-serif`,
-    secondaryFont: `font-family:  Arial`,
+    primaryFont: `open sans, sans-serif`,
+    secondaryFont: `helvetica ,Helvetica,Roboto,Arial,sans-serif`,
   
     mMX_XXS: "@media (max-width: 400px)",
     mMX_XS: "@media (max-width: 480px)",
@@ -32,4 +35,3 @@ const Theme = {
   };
 
   export default Theme
-  export const TypeOfTheme = typeof Theme

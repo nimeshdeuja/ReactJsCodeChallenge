@@ -15,3 +15,10 @@ export const LayoutStyled = styled.div`
           }
     }
 `
+
+
+export const Box = styled.div`
+    background:rgba(${Theme.offWhite}, 1);
+    box-shadow: 0 1px 5px 0 rgb(0 0 0 / 15%);
+    padding:${Theme.gMD};
+`

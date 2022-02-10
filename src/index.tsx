@@ -5,6 +5,13 @@ import { BrowserRouter } from 'react-router-dom';
 import { Provider } from "react-redux"
 import { store } from "./state/index"
 
+/* Import Open San Fonts */
+const Fonts = document.createElement("link");
+Fonts.rel = "stylesheet";
+Fonts.href =
+  "https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap";
+document.head.appendChild(Fonts);
+
 ReactDOM.render(
   <BrowserRouter>
     <Provider store={store}>

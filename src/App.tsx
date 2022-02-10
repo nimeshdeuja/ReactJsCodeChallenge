@@ -3,7 +3,7 @@ import { ThemeProvider } from "styled-components";
 
 import Show from "./components/show";
 import Detail from "./components/episode/detail";
-import GlobalStyle from "./shared/globalStyle";
+import GlobalStyle from "./shared/global.style";
 import Theme from "./shared/theme";
 
 function App() {

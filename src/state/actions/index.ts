@@ -15,6 +15,14 @@ interface ShowErrorAction {
 interface EpisodeErrorAction {
     type: ActionType.EPISODE_ERROR;
 }
+interface TabsAction {
+    type: ActionType.TABS;
+    data: number
+}
+interface FilterAction {
+    type: ActionType.FILTER;
+    data: Object[]
+}
 export type DataTypeEpi = {
         isLoading:boolean,
         reload:boolean,
@@ -25,5 +33,10 @@ export type DataTypeSho = {
         reload:boolean,
         detail:object | null
 }
+export type DataTypeTabs = {
+    season:number,
+    totalSeason:Object[],
+    current?:Object[]
+}
 
-export type Action = ShowsDetailSuccessAction | ShowErrorAction | EpisodeSuccessAction | EpisodeErrorAction
+export type Action = ShowsDetailSuccessAction | ShowErrorAction | EpisodeSuccessAction | EpisodeErrorAction | TabsAction | FilterAction

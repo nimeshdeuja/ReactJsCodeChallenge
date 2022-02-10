@@ -1,32 +1,58 @@
-import { useEffect } from "react";
+import { EffectCallback, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux"
-import { useNavigate } from "react-router-dom";
 import { bindActionCreators } from 'redux';
+
+import { get } from "../../server-requests/server-requests";
 import Layout from "../../shared/layout";
+import { createMarkup } from "../../shared/utility";
 
 import { actionCreators } from "../../state";
+import Episodes from "../episode";
+import { InnerLayout } from "./show-styles";
 
 const Show = () => {
-  const navigate = useNavigate();
   const dispatch = useDispatch();
 
-  const { showsDetailSuccess, showsDetailError, episodesSuccess } = bindActionCreators(actionCreators, dispatch);
-  const data1 = useSelector((state:any)=>state);
+  const { showsDetailSuccess, showsDetailError } = bindActionCreators(actionCreators, dispatch);
+  const data = useSelector((state:any)=>state);
+  console.log("🚀 ~ file: index.tsx ~ line 16 ~ Show ~ data", data)
 
+  useEffect((): ReturnType<EffectCallback> =>{
+    let isMounted = true;
+    if(data.shows.reload){
+      get({url:'https://api.tvmaze.com/shows/6771'})
+      .then((data)=>showsDetailSuccess(data))
+      .catch((state)=>showsDetailError(state))
+    }
+    return (): void => {
+      isMounted = false;
+    }
+  },[data.shows.reload])
 
-  useEffect(()=>{
-
-  },)
-
-  const episodeDetailClickHandler =()=>{
-    navigate('/episode/657308')
+  let titleElement, imageElement, summaryElement;
+  if(data.shows.detail) {
+    let details = data.shows.detail;
+    titleElement = <h2>{details.name}</h2>
+    imageElement = <img src={details.image.medium} />
+    summaryElement = <article dangerouslySetInnerHTML={createMarkup(data.shows.detail.summary)} />
   }
 
   return <Layout>
-      <div style={{height:2000}}>   
-      <div onClick={episodeDetailClickHandler}>push</div>
-      Show Page
-      </div>
+    <>
+    {titleElement}
+      <InnerLayout> 
+        <aside className="leftSide">
+          <div>
+            {imageElement}
+            {summaryElement}
+          </div>
+        </aside>
+        <aside className="rightSide">
+          {data.shows.detail && <Episodes id={data.shows.detail.id}/>}
+          
+        </aside>
+      </InnerLayout>
+      </>
   </Layout>;
 };
 
