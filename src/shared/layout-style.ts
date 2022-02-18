@@ -19,6 +19,13 @@ export const LayoutStyled = styled.div`
 
 export const Box = styled.div`
     background:rgba(${Theme.offWhite}, 1);
-    box-shadow: 0 1px 5px 0 rgb(0 0 0 / 15%);
-    padding:${Theme.gMD};
+    -webkit-box-shadow: 0px 0px 10px 0px rgba(${Theme.black},0.25); 
+    box-shadow: 0px 0px 10px 0px rgba(${Theme.black},0.25); 
+    padding:${Theme.gMD}; 
+    ${Theme.fSM};
+
+    .smallImage{
+        width:100%;
+        border:1px solid rgba(${Theme.black},0.0625);
+    }
 `

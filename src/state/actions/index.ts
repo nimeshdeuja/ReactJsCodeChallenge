@@ -1,6 +1,15 @@
 
 import { ActionType } from '../action-types';
 
+
+interface EpisodeDetailSuccessAction {
+    type: ActionType.DETAIL_SUCCESS;
+    detail?: object
+}
+interface EpisodeDetailErrorAction {
+    type: ActionType.DETAIL_ERROR;
+}
+
 interface ShowsDetailSuccessAction {
     type: ActionType.SHOW_SUCCESS;
     data?: object
@@ -38,5 +47,8 @@ export type DataTypeTabs = {
     totalSeason:Object[],
     current?:Object[]
 }
+export type DataTypeEpiDetail = {
+        detail?:Object | null
+}
 
-export type Action = ShowsDetailSuccessAction | ShowErrorAction | EpisodeSuccessAction | EpisodeErrorAction | TabsAction | FilterAction
+export type Action = ShowsDetailSuccessAction | ShowErrorAction | EpisodeSuccessAction | EpisodeErrorAction | TabsAction | FilterAction | EpisodeDetailSuccessAction | EpisodeDetailErrorAction

@@ -23,9 +23,7 @@ const Episodes = ({id}:Props) => {
     let isMounted = true;
     if(data.episodes.reload){
       get({url:`https://api.tvmaze.com/shows/${id}/episodes`})
-      .then((data)=>{
-        episodesSuccess(data)
-      })
+      .then((data)=>episodesSuccess(data))
       .catch((state)=>episodesError(state))
     }
     return (): void => {

@@ -22,6 +22,9 @@ export const InnerLayout = styled.div`
                 ${Theme.fDF};
             }
         }
+        >p{
+            margin-top:${Theme.gMD};
+        }
     }
 
     .rightSide{

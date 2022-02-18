@@ -5,7 +5,6 @@ import { bindActionCreators } from 'redux';
 import { get } from "../../server-requests/server-requests";
 import Layout from "../../shared/layout";
 import { createMarkup } from "../../shared/utility";
-
 import { actionCreators } from "../../state";
 import Episodes from "../episode";
 import { InnerLayout } from "./show-styles";
@@ -29,12 +28,13 @@ const Show = () => {
     }
   },[data.shows.reload])
 
-  let titleElement, imageElement, summaryElement;
+  let titleElement, imageElement, summaryElement, episodesList;
   if(data.shows.detail) {
     let details = data.shows.detail;
     titleElement = <h2>{details.name}</h2>
-    imageElement = <img src={details.image.medium} />
-    summaryElement = <article dangerouslySetInnerHTML={createMarkup(data.shows.detail.summary)} />
+    imageElement = <img src={details.image.medium} alt={details.name} />
+    summaryElement = <article dangerouslySetInnerHTML={createMarkup(details.summary)} />
+    episodesList = <Episodes id={details.id}/>
   }
 
   return <Layout>
@@ -48,8 +48,7 @@ const Show = () => {
           </div>
         </aside>
         <aside className="rightSide">
-          {data.shows.detail && <Episodes id={data.shows.detail.id}/>}
-          
+          {episodesList}
         </aside>
       </InnerLayout>
       </>

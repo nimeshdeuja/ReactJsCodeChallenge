@@ -30,7 +30,7 @@ export const episodesSuccess = (data:any)=>{
 }
 export const episodesError = (state:string|number)=>{
     return (dispatch:Dispatch<Action>)=>{
-        console.error(`Error on getting show detail: ${state}`)
+        console.error(`Error on getting episodes list: ${state}`)
         dispatch({
             type:ActionType.EPISODE_ERROR,
         })
@@ -52,6 +52,24 @@ export const currentEpisodes = (list:Object[])=>{
         dispatch({
             type:ActionType.FILTER,
             data:list
+        })
+    }
+}
+
+
+export const episodeDetailSuccess = (data:any)=>{
+    return (dispatch:Dispatch<Action>)=>{
+        dispatch({
+            type:ActionType.DETAIL_SUCCESS,
+            detail:data
+        })
+    }
+}
+export const episodeDetailError = (state:string|number)=>{
+    return (dispatch:Dispatch<Action>)=>{
+        console.error(`Error on getting episode detail: ${state}`)
+        dispatch({
+            type:ActionType.DETAIL_ERROR,
         })
     }
 }
